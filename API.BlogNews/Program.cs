@@ -1,8 +1,10 @@
+using API.BlogNews.Controllers;
 using API.BlogNews.Interfaces;
 using API.BlogNews.Services;
 using Database.BlogNews;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Identity.Web;
@@ -20,9 +22,7 @@ var connectionStringDatabase = configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<BlogNewsDbContext>(options => options.UseSqlServer(connectionStringDatabase)
                                                                             .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.ContextInitialized)));
 
-// Add services to the container.
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<BlogNewsDbContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

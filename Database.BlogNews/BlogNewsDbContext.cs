@@ -1,10 +1,11 @@
 ﻿using Database.BlogNews.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Database.BlogNews
 {
-    public class BlogNewsDbContext : DbContext
+    public class BlogNewsDbContext : IdentityDbContext
     {
         public BlogNewsDbContext(DbContextOptions<BlogNewsDbContext> options) : base(options)
         {

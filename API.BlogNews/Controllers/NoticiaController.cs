@@ -6,10 +6,9 @@ using Microsoft.Identity.Web.Resource;
 
 namespace API.BlogNews.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    //[RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
     public class NoticiaController : Controller
     {
         private readonly INoticiaService _NoticiaService;

@@ -1,0 +1,3 @@
+
+dotnet ef migrations add AddIdentity --context BlogNewsDbContext --project Database.BlogNews\Database.BlogNews.csproj --startup-project API.BlogNews\API.BlogNews.csproj
+dotnet ef database update --context BlogNewsDbContext --project Database.BlogNews\Database.BlogNews.csproj --startup-project API.BlogNews\API.BlogNews.csproj
