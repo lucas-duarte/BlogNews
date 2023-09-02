@@ -49,7 +49,7 @@ namespace API.BlogNews.Controllers
             return BadRequest("Login Invalido");
         }
 
-        [HttpPost("ListUsers")]
+        [HttpGet("ListUsers")]
         public async Task<IActionResult> GetUser()
         {
             return Ok(userManager.Users.Select(u => u.UserName));
