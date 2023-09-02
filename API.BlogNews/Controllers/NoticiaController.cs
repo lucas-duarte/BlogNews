@@ -62,14 +62,5 @@ namespace API.BlogNews.Controllers
                 return BadRequest(result.ErrorMessage);
             }
         }
-
-        // Lidando com exceções de autorização
-        [AllowAnonymous] // Permite que qualquer pessoa acesse esta ação
-        [Route("Unauthorized")]
-        [HttpGet]
-        public ActionResult UnauthorizedAccess()
-        {
-            return Unauthorized(new { message = "Você não tem autorização para acessar este recurso." });
-        }
     }
 }
