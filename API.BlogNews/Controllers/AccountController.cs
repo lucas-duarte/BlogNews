@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.BlogNews.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> userManager;

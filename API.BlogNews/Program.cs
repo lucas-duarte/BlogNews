@@ -1,4 +1,5 @@
 using API.BlogNews.Controllers;
+using API.BlogNews.Helpers;
 using API.BlogNews.Interfaces;
 using API.BlogNews.Services;
 using Database.BlogNews;
@@ -24,22 +25,15 @@ builder.Services.AddDbContext<BlogNewsDbContext>(options => options.UseSqlServer
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<BlogNewsDbContext>();
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<INoticiaService, NoticiaService>();
 
-var app = builder.Build();
+builder.Services.AddControllers();
 
-/*
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}*/
+var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
