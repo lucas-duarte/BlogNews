@@ -6,7 +6,7 @@ using Microsoft.Identity.Web.Resource;
 
 namespace API.BlogNews.Controllers
 {
-    [Authorize]
+    
     [ApiController]
     [Route("api/[controller]")]
     public class NoticiaController : Controller
