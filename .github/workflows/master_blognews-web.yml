@@ -35,8 +35,9 @@ jobs:
           path: ${{env.DOTNET_ROOT}}/myapp
 
       - name: Run Testes
-        run: | 
-          API_URL=$API_URL
+        env:
+          API_URL: "https://blognews-web.azurewebsites.net/"
+        run: |   
           dotnet test API.BlogNewsTest/API.BlogNewsTest.csproj --configuration Release
         continue-on-error: true
 

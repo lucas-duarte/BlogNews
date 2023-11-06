@@ -35,7 +35,7 @@ namespace API.BlogNewsTest.Controllers
             else
             {
                 // Ambiente de desenvolvimento local
-                apiUrl = "http://localhost/api/Noticia/Create";
+                apiUrl = "http://localhost/";
             }
 
             using (HttpClient client = new HttpClient())
@@ -56,7 +56,7 @@ namespace API.BlogNewsTest.Controllers
 
 
                 // Fazer a requisição HTTP POST para a ação "Create
-                var response = client.PostAsync(apiUrl, stringContent).Result;
+                var response = client.PostAsync(apiUrl + "api/Noticia/Create", stringContent).Result;
 
 
                 // Verificar se a resposta é Ok
