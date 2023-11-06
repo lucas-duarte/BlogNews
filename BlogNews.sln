@@ -3,25 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.BlogNews", "API.BlogNews\API.BlogNews.csproj", "{BF9FF55F-EC00-4B2A-8DED-4A22703FC232}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.BlogNews", "Database.BlogNews\Database.BlogNews.csproj", "{995E416B-2ABF-402A-8240-91A33462B324}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BF9FF55F-EC00-4B2A-8DED-4A22703FC232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF9FF55F-EC00-4B2A-8DED-4A22703FC232}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF9FF55F-EC00-4B2A-8DED-4A22703FC232}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF9FF55F-EC00-4B2A-8DED-4A22703FC232}.Release|Any CPU.Build.0 = Release|Any CPU
-		{995E416B-2ABF-402A-8240-91A33462B324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{995E416B-2ABF-402A-8240-91A33462B324}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{995E416B-2ABF-402A-8240-91A33462B324}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{995E416B-2ABF-402A-8240-91A33462B324}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
