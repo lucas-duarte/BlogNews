@@ -36,6 +36,7 @@ jobs:
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
+        
 
       - name: Run Unit Tests
         run: dotnet test API.BlogNewsTest/API.BlogNewsTest.csproj --configuration Release
@@ -43,7 +44,7 @@ jobs:
       - name: Set up Integration Tests
         run: |
           # Define a variável de ambiente API_URL para apontar para o ambiente de teste
-          echo "::set-env name=API_URL::http://localhost/api/Noticia/Create"
+          echo "::set-env name=API_URL::https://blognews-web.azurewebsites.net/api/Noticia/Create"
 
       - name: Run Integration Tests
         run: docker build -t API.BlogNewsTest .
