@@ -26,6 +26,18 @@ namespace API.BlogNewsTest.Controllers
         [Fact]
         public async Task CreateNoticia_ReturnsOkResult()
         {
+            string apiUrl = null;
+            if (Environment.GetEnvironmentVariable("API_URL") != null)
+            {
+                // Ambiente de produção ou teste
+                apiUrl = Environment.GetEnvironmentVariable("API_URL");
+            }
+            else
+            {
+                // Ambiente de desenvolvimento local
+                apiUrl = "http://localhost/api/Noticia/Create";
+            }
+
             using (HttpClient client = new HttpClient())
             {
 
@@ -44,7 +56,7 @@ namespace API.BlogNewsTest.Controllers
 
 
                 // Fazer a requisição HTTP POST para a ação "Create
-                var response = client.PostAsync("http://localhost/api/Noticia/Create", stringContent).Result;
+                var response = client.PostAsync(apiUrl, stringContent).Result;
 
 
                 // Verificar se a resposta é Ok
