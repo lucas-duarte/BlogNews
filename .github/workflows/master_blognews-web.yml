@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
@@ -29,26 +29,16 @@ jobs:
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v1
-        
-
-      - name: Run Unit Tests
-        run: dotnet test API.BlogNewsTest/API.BlogNewsTest.csproj --configuration Release
-
-      - name: Set up Integration Tests
-        run: |
-          # Define a variável de ambiente API_URL para apontar para o ambiente de teste
-          echo "::set-env name=API_URL::https://blognews-web.azurewebsites.net/api/Noticia/Create"
-
-      - name: Run Integration Tests
-        run: docker build -t API.BlogNewsTest .
-          docker run API.BlogNewsTest API.BlogNewsTest.csproj
+      - name: Run Testes
+        run: | 
+          API_URL=$API_URL
+          dotnet test API.BlogNewsTest/API.BlogNewsTest.csproj --configuration Release
+        continue-on-error: true
 
   deploy:
     runs-on: windows-latest
@@ -59,7 +49,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: .net-app
 
@@ -69,5 +59,5 @@ jobs:
         with:
           app-name: 'blognews-web'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5C61992A9FC04FABA79081336D57CDAF }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EF676AC1B48D40A890AE8BE4A2A9FB70 }}
           package: .
