@@ -1,0 +1,7 @@
+services:
+  api-blognews:
+    build:
+      context: .
+      dockerfile: API.BlogNews/Dockerfile
+    ports:
+      - "80:80"
