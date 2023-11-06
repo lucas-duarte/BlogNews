@@ -24,7 +24,7 @@ namespace API.BlogNewsTest.Controllers
         }
 
         [Fact(DisplayName = "Criando uma noticia")]
-        [Trait("Categoria", "Validando Integração")]
+        [Trait("Categoria", "Validando Teste de Integração")]
         public async Task CreateNoticia_ReturnsOkResult()
         {
             string apiUrl = null;
