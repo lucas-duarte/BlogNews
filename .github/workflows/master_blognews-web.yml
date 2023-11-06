@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
@@ -29,10 +29,20 @@ jobs:
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
+
+      - name: Run Unit Tests
+        run: dotnet test API.BlogNewsTest/API.BlogNewsTest.csproj --configuration Release
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v1
+
+      - name: Run Integration Tests
+        run: docker build -t API.BlogNewsTest .
+          docker run API.BlogNewsTest API.BlogNewsTest.csproj
 
   deploy:
     runs-on: windows-latest
@@ -43,7 +53,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: .net-app
 
@@ -53,5 +63,5 @@ jobs:
         with:
           app-name: 'blognews-web'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EF676AC1B48D40A890AE8BE4A2A9FB70 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5C61992A9FC04FABA79081336D57CDAF }}
           package: .
