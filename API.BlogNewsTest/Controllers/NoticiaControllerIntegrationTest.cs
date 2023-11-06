@@ -23,7 +23,8 @@ namespace API.BlogNewsTest.Controllers
             _webApplicationFactory = webApplicationFactory;
         }
 
-        [Fact]
+        [Fact(DisplayName = "Criando uma noticia")]
+        [Trait("Categoria", "Validando Integração")]
         public async Task CreateNoticia_ReturnsOkResult()
         {
             string apiUrl = null;
