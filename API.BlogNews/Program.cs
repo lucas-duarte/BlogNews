@@ -18,6 +18,8 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
 
+builder.Services.AddApplicationInsightsTelemetry();
+
 // Add services to the container.
 var connectionStringDatabase = configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<BlogNewsDbContext>(options => options.UseSqlServer(connectionStringDatabase)
