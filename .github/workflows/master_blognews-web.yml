@@ -34,6 +34,16 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
+      - name: Run Unit Tests
+        run: dotnet test API.BlogNewsTest/API.BlogNewsTest.csproj --configuration Release
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v1
+
+      - name: Run Integration Tests
+        run: docker build -t API.BlogNewsTest .
+          docker run API.BlogNewsTest API.BlogNewsTest.csproj
+
   deploy:
     runs-on: windows-latest
     needs: build

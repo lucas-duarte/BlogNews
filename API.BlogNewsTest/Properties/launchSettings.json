@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "API.BlogNewsTest": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
